@@ -1,0 +1,64 @@
+﻿@model Pry_Agencia_Viajes.Detalle_Paquete_Turistico
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Detalle_Paquete_Turistico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dptu_etado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dptu_etado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dptu_observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dptu_observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividad.act_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividad.act_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paquete_Turistico.ptu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paquete_Turistico.ptu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transporte.tra_tipo_transporte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transporte.tra_tipo_transporte)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

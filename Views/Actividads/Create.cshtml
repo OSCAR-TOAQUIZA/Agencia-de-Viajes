@@ -1,0 +1,100 @@
+﻿@model Pry_Agencia_Viajes.Actividad
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="home_ciudades">
+
+    <div class="plantilla parallax-window" data-parallax="scroll" data-image-src="@Url.Content(ViewBag.ruta)"></div>
+    <div class="home_content">
+        <h1 class="text-center" style="color:white">
+            <strong>
+                @ViewBag.nombre
+            </strong>
+        </h1>
+    </div>
+</div>
+<h3 class="text-center" style="color:white">
+    <strong>
+        Ciudad:@ViewBag.ciudad
+    </strong>
+</h3>
+
+<div class="super_container">
+    <br />
+    <div class="container jumbotron">
+
+
+        @using (Html.BeginForm("Create", "Actividads", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3>Formulario Registrar Nueva Actividad</h3>
+                </div>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.act_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.act_nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.act_nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <input type="number" name="id_Lugar" value="@ViewBag.id" hidden />
+                <input type="text" name="ciudad" value="@ViewBag.ciudad" hidden/>
+                <input type="text" name="nombre_Lugar" value="@ViewBag.nombre" hidden />
+                <input type="text" name="foto" value="@ViewBag.ruta" hidden />
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.act_ruta_foto_1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="actividadFoto1" class="form-control" />
+                            <span class="text-danger"> @ViewBag.ErrorFoto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.act_descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.act_descripcion, new { @class = "form-control", @rows = 3 })
+                            @Html.ValidationMessageFor(model => model.act_descripcion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.act_costo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.act_costo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.act_costo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.act_estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.act_estado)
+                                @Html.ValidationMessageFor(model => model.act_estado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="">
+                        <input type="submit" value="Registrar Actividad" class="btn btn-success" />
+                        <a class="btn btn-danger" href="@Url.Action("Index")">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

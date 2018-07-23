@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Pry_Agencia_Viajes.Detalle_Paquete_Turistico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="super_container">
+
+    @Html.Partial("CaberezaDetallePaquete", "Lista de Paquetes Turistico")
+    <div class="">
+        <br />
+        <div class="container">
+            <p>
+                @Html.ActionLink("Armar Nuevo", "Create", null, new { @class = "btn btn-primary" })
+            </p>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dptu_observacion)
+                    </th>
+                    <th>
+                        Actividades
+                    </th>
+                    <th>
+                        Nombre Paquete Turistico
+                    </th>
+                    <th>
+                        Nombre Transporte
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dptu_etado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dptu_observacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Actividad.act_nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Paquete_Turistico.ptu_nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Transporte.tra_tipo_transporte)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.dptu_id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.dptu_id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.dptu_id })
+                            <button id="botonModal" type="button" onclick="pasarIdHotel(@item.act_id)" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#exampleModal">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Pry_Agencia_Viajes.Hotel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="super_container">
+
+    @Html.Partial("CabezeraHotel", "Lista de Hoteles")
+    <div class="">
+        <br />
+        <div class="container">
+            <p>
+                @Html.ActionLink("Registrar Nuevo Hotel", "Create", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Gestionar Habitaciones", "Index", "Habitaciones",null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Habitaciones", "Index","DetalleHabitaciones", null, new { @class = "btn btn-primary" })
+            </p>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hot_nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hot_direccion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hot_calificacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hab_desayuno)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hot_telefono)
+                    </th>
+                    <th>
+                        Ciudad
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hot_nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hot_direccion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hot_calificacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hab_desayuno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hot_telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ciudad.ciu_nombre)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.hot_id }, new { @class = "btn btn-warning btn-sm btn-block"})
+                            @*@Html.ActionLink("Details", "Details", new { id = item.hot_id })*@
+                            <button id="botonModal" type="button" onclick="pasarIdHotel(@item.hot_id)" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#exampleModal">
+                                Eliminar
+                            </button>
+                            @*@Html.ActionLink("Eliminar", "Delete", new { id = item.hot_id })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Actividad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro de eliminar los datos del hotel?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+
+
+                @using (Html.BeginForm("DeleteConfirmed", "Hoteles",FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input id="valor_id_Hotel" type="number" name="id" />
+                    <input type="submit" value="Si, Eliminar" class="btn btn-danger" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var id_cod;
+    function pasarIdHotel(data) {
+        console.log(data);
+        id_cod = data;
+        document.getElementById("valor_id_Hotel").value = id_cod;
+    }
+
+</script>

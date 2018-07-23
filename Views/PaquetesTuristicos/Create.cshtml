@@ -1,0 +1,105 @@
+﻿@model Pry_Agencia_Viajes.Paquete_Turistico
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="super_container">
+
+    @Html.Partial("CabezeraPaquete", "NUEVO")
+    <br />
+
+    <div class="container">
+        @using (Html.BeginForm("Create", "PaquetesTuristicos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        <div class="row jumbotron">
+            @Html.AntiForgeryToken()
+
+            <div class="col-12 text-center">
+                <h3>Formulario para crear un Paquete Turístico</h3>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ptu_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ptu_nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ptu_nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ptu_foto_1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="col-md-10">
+                        <input type="file" name="ImagenFile" />
+                    </div>
+                </div>
+            </div>
+        </div>*@
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ptu_descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ptu_descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ptu_descripcion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ptu_fecha_salida, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ptu_fecha_salida, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ptu_fecha_salida, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ptu_fecha_llegada, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ptu_fecha_llegada, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ptu_fecha_llegada, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.dha_id, "Hotel / Tipo Habitación / Costo", htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("dha_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.dha_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ptu_estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.ptu_estado)
+                            @Html.ValidationMessageFor(model => model.ptu_estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+
+
+
+

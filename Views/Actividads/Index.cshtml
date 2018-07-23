@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Pry_Agencia_Viajes.Actividad>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.act_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_costo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_ruta_foto_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_ruta_foto_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lugar.lug_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_ruta_foto_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_ruta_foto_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lugar.lug_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.act_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.act_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.act_id })
+        </td>
+    </tr>
+}
+
+</table>

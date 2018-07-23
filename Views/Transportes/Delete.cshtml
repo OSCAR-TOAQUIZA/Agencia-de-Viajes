@@ -1,0 +1,80 @@
+﻿@model Pry_Agencia_Viajes.Transporte
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Transporte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_tipo_transporte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_tipo_transporte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_costo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_hora_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_hora_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_hora_llegada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_hora_llegada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

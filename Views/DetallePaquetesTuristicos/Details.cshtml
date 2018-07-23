@@ -1,0 +1,58 @@
+﻿@model Pry_Agencia_Viajes.Detalle_Paquete_Turistico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Detalle_Paquete_Turistico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dptu_etado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dptu_etado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dptu_observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dptu_observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividad.act_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividad.act_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paquete_Turistico.ptu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paquete_Turistico.ptu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transporte.tra_tipo_transporte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transporte.tra_tipo_transporte)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.dptu_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

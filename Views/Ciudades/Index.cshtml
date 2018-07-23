@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Pry_Agencia_Viajes.Ciudad>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="super_container">
+
+    @Html.Partial("Cabezera_Ciudad","INICIO")
+    <div class="intro">
+        <div class="container">
+            
+            <p>
+                @Html.ActionLink("Registrar Nueva Ciudad", "Create", null, new { @class = "btn btn-primary" })
+            </p>
+            <div class=" card-columns">
+                @foreach (var item in Model)
+
+                {
+        <div class="">
+            <div class="card ">
+                <div class="card-header text-center text-white bg-primary">
+                    <h3>
+                        @Html.DisplayFor(modelItem => item.ciu_nombre)
+                    </h3>
+                </div>
+                <img class="card-img-top" src="@Url.Content(item.ciu_ruta_foto)" alt="Quito">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        @Html.DisplayFor(modelItem => item.ciu_descripcion)
+                    </p>
+                    <hr />
+                    <p class="card-text">
+                        <b>@Html.DisplayNameFor(model => model.ciu_clima):</b>
+                        @Html.DisplayFor(modelItem => item.ciu_clima)
+                    </p>
+                    <hr />
+                    <p class="card-text">
+                        <b>@Html.DisplayNameFor(model => model.ciu_recomendaciones):</b>
+                        @Html.DisplayFor(modelItem => item.ciu_recomendaciones)
+                    </p>
+                    <hr />
+                    <p class="card-text">
+                        <b>@Html.DisplayNameFor(model => model.ciu_observacion):</b>
+                        @Html.DisplayFor(modelItem => item.ciu_observacion)
+                    </p>
+
+                </div>
+                <div class="card-footer text-center">
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-success" href="@Url.Action("Edit","Ciudades",new { id = item.ciu_id } )"> <i class="fa fa-pencil"></i> Editar</a>
+                        <a class="btn btn-danger" href="@Url.Action("Delete","Ciudades", new { id = item.ciu_id })"> <i class="fa fa-trash"></i> Eliminar</a>
+
+
+                    </div>
+                    @*@Html.ActionLink(" ", "Edit", new { id = item.ciu_id }, new
+                { @class = "fa fa-pencil", title = "Editar" })
+
+
+                                        @Html.ActionLink(" ", "Delete", new { id = item.ciu_id }, new
+                { @class = "fa fa-trash", title = "Eliminar" })
+                                        @Html.ActionLink("Details", "Details", new { id = item.ciu_id })*@
+                </div>
+            </div>
+
+        </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>

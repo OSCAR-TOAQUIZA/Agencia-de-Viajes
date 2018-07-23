@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Agencia_de_Viajes_CertificacionModelStoreContainer" CdmEntityContainer="Agencia_de_Viajes_CertificacionEntities">
+    <EntitySetMapping Name="Actividad">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Actividad">
+        <MappingFragment StoreEntitySet="Actividad">
+          <ScalarProperty Name="act_id" ColumnName="act_id" />
+          <ScalarProperty Name="act_nombre" ColumnName="act_nombre" />
+          <ScalarProperty Name="act_descripcion" ColumnName="act_descripcion" />
+          <ScalarProperty Name="act_costo" ColumnName="act_costo" />
+          <ScalarProperty Name="act_estado" ColumnName="act_estado" />
+          <ScalarProperty Name="act_ruta_foto_1" ColumnName="act_ruta_foto_1" />
+          <ScalarProperty Name="act_ruta_foto_2" ColumnName="act_ruta_foto_2" />
+          <ScalarProperty Name="lug_id" ColumnName="lug_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ciudad">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Ciudad">
+        <MappingFragment StoreEntitySet="Ciudad">
+          <ScalarProperty Name="ciu_id" ColumnName="ciu_id" />
+          <ScalarProperty Name="ciu_nombre" ColumnName="ciu_nombre" />
+          <ScalarProperty Name="ciu_descripcion" ColumnName="ciu_descripcion" />
+          <ScalarProperty Name="ciu_clima" ColumnName="ciu_clima" />
+          <ScalarProperty Name="ciu_recomendaciones" ColumnName="ciu_recomendaciones" />
+          <ScalarProperty Name="ciu_observacion" ColumnName="ciu_observacion" />
+          <ScalarProperty Name="ciu_ruta_foto" ColumnName="ciu_ruta_foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+          <ScalarProperty Name="cli_cedula" ColumnName="cli_cedula" />
+          <ScalarProperty Name="cli_nombre1" ColumnName="cli_nombre1" />
+          <ScalarProperty Name="cli_nombre2" ColumnName="cli_nombre2" />
+          <ScalarProperty Name="cli_apellido1" ColumnName="cli_apellido1" />
+          <ScalarProperty Name="cli_apellido2" ColumnName="cli_apellido2" />
+          <ScalarProperty Name="cli_fecha_nac" ColumnName="cli_fecha_nac" />
+          <ScalarProperty Name="cli_email" ColumnName="cli_email" />
+          <ScalarProperty Name="cli_direccion" ColumnName="cli_direccion" />
+          <ScalarProperty Name="cli_telefono" ColumnName="cli_telefono" />
+          <ScalarProperty Name="cli_observacion" ColumnName="cli_observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Habitacion">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Detalle_Habitacion">
+        <MappingFragment StoreEntitySet="Detalle_Habitacion">
+          <ScalarProperty Name="dha_id" ColumnName="dha_id" />
+          <ScalarProperty Name="hot_id" ColumnName="hot_id" />
+          <ScalarProperty Name="hab_id" ColumnName="hab_id" />
+          <ScalarProperty Name="dha_costo" ColumnName="dha_costo" />
+          <ScalarProperty Name="dha_observacion" ColumnName="dha_observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Paquete_Turistico">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Detalle_Paquete_Turistico">
+        <MappingFragment StoreEntitySet="Detalle_Paquete_Turistico">
+          <ScalarProperty Name="dptu_id" ColumnName="dptu_id" />
+          <ScalarProperty Name="ptu_id" ColumnName="ptu_id" />
+          <ScalarProperty Name="act_id" ColumnName="act_id" />
+          <ScalarProperty Name="tra_id" ColumnName="tra_id" />
+          <ScalarProperty Name="dptu_etado" ColumnName="dptu_etado" />
+          <ScalarProperty Name="dptu_observacion" ColumnName="dptu_observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Reserva">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Detalle_Reserva">
+        <MappingFragment StoreEntitySet="Detalle_Reserva">
+          <ScalarProperty Name="dres_id" ColumnName="dres_id" />
+          <ScalarProperty Name="res_id" ColumnName="res_id" />
+          <ScalarProperty Name="ptu_id" ColumnName="ptu_id" />
+          <ScalarProperty Name="dres_costo" ColumnName="dres_costo" />
+          <ScalarProperty Name="dres_total" ColumnName="dres_total" />
+          <ScalarProperty Name="dres_estado" ColumnName="dres_estado" />
+          <ScalarProperty Name="dres_observacion" ColumnName="dres_observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Habitacion">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Habitacion">
+        <MappingFragment StoreEntitySet="Habitacion">
+          <ScalarProperty Name="hab_id" ColumnName="hab_id" />
+          <ScalarProperty Name="hab_nombre" ColumnName="hab_nombre" />
+          <ScalarProperty Name="hab_numero_camas" ColumnName="hab_numero_camas" />
+          <ScalarProperty Name="hab_numero_banos" ColumnName="hab_numero_banos" />
+          <ScalarProperty Name="hab_telefono" ColumnName="hab_telefono" />
+          <ScalarProperty Name="hab_descripcion" ColumnName="hab_descripcion" />
+          <ScalarProperty Name="hab_observacion" ColumnName="hab_observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hotel">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Hotel">
+        <MappingFragment StoreEntitySet="Hotel">
+          <ScalarProperty Name="hot_id" ColumnName="hot_id" />
+          <ScalarProperty Name="ciu_id" ColumnName="ciu_id" />
+          <ScalarProperty Name="hot_nombre" ColumnName="hot_nombre" />
+          <ScalarProperty Name="hot_direccion" ColumnName="hot_direccion" />
+          <ScalarProperty Name="hot_calificacion" ColumnName="hot_calificacion" />
+          <ScalarProperty Name="hab_desayuno" ColumnName="hab_desayuno" />
+          <ScalarProperty Name="hot_telefono" ColumnName="hot_telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lugar">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Lugar">
+        <MappingFragment StoreEntitySet="Lugar">
+          <ScalarProperty Name="lug_id" ColumnName="lug_id" />
+          <ScalarProperty Name="lug_nombre" ColumnName="lug_nombre" />
+          <ScalarProperty Name="lug_descripcion" ColumnName="lug_descripcion" />
+          <ScalarProperty Name="lug_estado" ColumnName="lug_estado" />
+          <ScalarProperty Name="lug_ruta_foto" ColumnName="lug_ruta_foto" />
+          <ScalarProperty Name="lug_observacion" ColumnName="lug_observacion" />
+          <ScalarProperty Name="ciu_id" ColumnName="ciu_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paquete_Turistico">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Paquete_Turistico">
+        <MappingFragment StoreEntitySet="Paquete_Turistico">
+          <ScalarProperty Name="ptu_id" ColumnName="ptu_id" />
+          <ScalarProperty Name="ptu_nombre" ColumnName="ptu_nombre" />
+          <ScalarProperty Name="ptu_descripcion" ColumnName="ptu_descripcion" />
+          <ScalarProperty Name="ptu_estado" ColumnName="ptu_estado" />
+          <ScalarProperty Name="ptu_foto_1" ColumnName="ptu_foto_1" />
+          <ScalarProperty Name="ptu_foto_2" ColumnName="ptu_foto_2" />
+          <ScalarProperty Name="ptu_fecha_salida" ColumnName="ptu_fecha_salida" />
+          <ScalarProperty Name="ptu_fecha_llegada" ColumnName="ptu_fecha_llegada" />
+          <ScalarProperty Name="dha_id" ColumnName="dha_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reserva">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Reserva">
+        <MappingFragment StoreEntitySet="Reserva">
+          <ScalarProperty Name="res_id" ColumnName="res_id" />
+          <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+          <ScalarProperty Name="res_fecha" ColumnName="res_fecha" />
+          <ScalarProperty Name="res_forma_pago" ColumnName="res_forma_pago" />
+          <ScalarProperty Name="res_estado_reserva" ColumnName="res_estado_reserva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transporte">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Transporte">
+        <MappingFragment StoreEntitySet="Transporte">
+          <ScalarProperty Name="tra_id" ColumnName="tra_id" />
+          <ScalarProperty Name="tra_tipo_transporte" ColumnName="tra_tipo_transporte" />
+          <ScalarProperty Name="tra_costo" ColumnName="tra_costo" />
+          <ScalarProperty Name="tra_origen" ColumnName="tra_origen" />
+          <ScalarProperty Name="tra_destino" ColumnName="tra_destino" />
+          <ScalarProperty Name="tra_hora_salida" ColumnName="tra_hora_salida" />
+          <ScalarProperty Name="tra_hora_llegada" ColumnName="tra_hora_llegada" />
+          <ScalarProperty Name="tra_descripcion" ColumnName="tra_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Viajero">
+      <EntityTypeMapping TypeName="Agencia_de_Viajes_CertificacionModel.Viajero">
+        <MappingFragment StoreEntitySet="Viajero">
+          <ScalarProperty Name="via_id" ColumnName="via_id" />
+          <ScalarProperty Name="dres_id" ColumnName="dres_id" />
+          <ScalarProperty Name="via_cedula" ColumnName="via_cedula" />
+          <ScalarProperty Name="via_nombre1" ColumnName="via_nombre1" />
+          <ScalarProperty Name="via_nombre2" ColumnName="via_nombre2" />
+          <ScalarProperty Name="via_apellido1" ColumnName="via_apellido1" />
+          <ScalarProperty Name="via_apellido2" ColumnName="via_apellido2" />
+          <ScalarProperty Name="via_fecha_nac" ColumnName="via_fecha_nac" />
+          <ScalarProperty Name="via_tipo_sangre" ColumnName="via_tipo_sangre" />
+          <ScalarProperty Name="via_email" ColumnName="via_email" />
+          <ScalarProperty Name="via_direccion" ColumnName="via_direccion" />
+          <ScalarProperty Name="via_telefono" ColumnName="via_telefono" />
+          <ScalarProperty Name="via_pais" ColumnName="via_pais" />
+          <ScalarProperty Name="via_nacionalidad" ColumnName="via_nacionalidad" />
+          <ScalarProperty Name="via_observacion" ColumnName="via_observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

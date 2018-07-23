@@ -1,0 +1,74 @@
+﻿@model Pry_Agencia_Viajes.Actividad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Actividad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.act_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.act_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.act_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.act_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.act_costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.act_costo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.act_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.act_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.act_ruta_foto_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.act_ruta_foto_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.act_ruta_foto_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.act_ruta_foto_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lugar.lug_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lugar.lug_nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.act_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

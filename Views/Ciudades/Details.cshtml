@@ -1,0 +1,66 @@
+﻿@model Pry_Agencia_Viajes.Ciudad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ciudad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_clima)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_clima)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_recomendaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_recomendaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_ruta_foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_ruta_foto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ciu_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

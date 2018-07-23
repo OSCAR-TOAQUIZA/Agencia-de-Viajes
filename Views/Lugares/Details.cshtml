@@ -1,0 +1,130 @@
+﻿@model Pry_Agencia_Viajes.Lugar
+@{
+    ViewBag.Title = "Details";
+    ViewBag.ruta = Model.lug_ruta_foto;
+    ViewBag.id_Lugar = Model.lug_id;
+}
+
+<div class="home_ciudades">
+
+    <div class="plantilla parallax-window" data-parallax="scroll" data-image-src="@Url.Content(ViewBag.ruta)"></div>
+    <div class="home_content">
+        <h1 class="text-center" style="color:white">
+            <strong>
+                @Html.DisplayFor(model => model.lug_nombre)
+            </strong>
+        </h1>
+    </div>
+</div>
+<h3 class="text-center" style="color:white">
+    <strong>
+        Ciudad:
+        @Html.DisplayFor(model => model.Ciudad.ciu_nombre)
+    </strong>
+</h3>
+
+<div class="super_container">
+    <br />
+    <div class="container jumbotron">
+
+        <div class="row">
+            <div class="col-md-10">
+                <h4>
+                    <strong>
+                        @Html.DisplayNameFor(model => model.lug_nombre):
+                    </strong>
+                    @Html.DisplayFor(model => model.lug_nombre) <br />
+                    <strong>
+                        Ciudad de Ubicación:
+                    </strong>
+                    @Html.DisplayFor(model => model.Ciudad.ciu_nombre) <br />
+                    <strong>
+                        @Html.DisplayNameFor(model => model.lug_descripcion):
+                    </strong>
+                    @Html.DisplayFor(model => model.lug_descripcion)
+                </h4>
+            </div>
+            <div class="col-md-2 text-center">
+                <div>
+                    @Html.ActionLink("Agregar Actividad", "Create", "Actividads", new { id_Lugar = Model.lug_id, foto = Model.lug_ruta_foto, ciudad = Model.Ciudad.ciu_nombre, nombre_Lugar = Model.lug_nombre }, new { @class = "btn btn-outline-warning btn-block" })
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.lug_id }, new { @class = "btn btn-outline-primary btn-block" })
+                    @Html.ActionLink("Ver Lugares", "Index", null, new { @class = "btn btn-outline-danger btn-block" })
+                </div>
+            </div>
+            
+            
+                <div class="col-12 text-center">
+                    <h3>Actividades</h3>
+                </div>
+                <br />
+                @foreach (var actividadGuardada in ViewBag.actividades)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="@Url.Content(actividadGuardada.act_ruta_foto_1)" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@actividadGuardada.act_nombre</h5>
+                                <p class="card-text">
+                                    @actividadGuardada.act_descripcion <br />
+                                </p>
+                                <strong>Costo por Persona:</strong>
+                                <h2>$@actividadGuardada.act_costo.ToString("0.00")</h2>
+                            </div>
+                            <div class="card-footer">
+                                @Html.ActionLink("Editar", "Edit", "Actividads", new { id=actividadGuardada.act_id, id_Lugar=Model.lug_id ,foto = Model.lug_ruta_foto, ciudad = Model.Ciudad.ciu_nombre, nombre_Lugar = Model.lug_nombre }, new { @class = "btn btn-warning" })
+                                <button id="botonModal" type="button" onclick="pasarId(@actividadGuardada.act_id)" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+           
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Actividad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro de borrar la actividad?
+                @ViewBag.valor;
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+
+
+                @using (Html.BeginForm("DeleteConfirmed", "Actividads"))
+                {
+                    @Html.AntiForgeryToken()
+                    <input id="valor_id" type="number" name="id" hidden />
+                    <input type="submit" value="Si, Eliminar" class="btn btn-danger" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var id_cod;
+    function pasarId(data) {
+        console.log(data);
+        id_cod = data;
+        document.getElementById("valor_id").value = id_cod;
+    }
+
+</script>

@@ -1,0 +1,87 @@
+﻿@model Pry_Agencia_Viajes.Detalle_Paquete_Turistico
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="super_container">
+
+    @Html.Partial("CaberezaDetallePaquete", "CREAR")
+    <br />
+
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+
+            <div class="row jumbotron">
+                @Html.AntiForgeryToken()
+               
+                <div class="col-12 text-center">
+                    <h3>Formulario para Armar Paquete Turistico</h3>
+                </div>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-md-6">
+                    <div class="form-group">
+                        
+                        @Html.LabelFor(model => model.ptu_id, "Nombre Paquete Turistico", htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-10">
+                           
+                            @Html.DropDownList("ptu_id",null, htmlAttributes: new { @class = "form-control", Enabled = "False" })
+                            @Html.ValidationMessageFor(model => model.ptu_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.act_id, "Seleccione la Actividad", htmlAttributes: new { @class = "control-label " })
+                        <div class="col-md-10">
+                            @Html.DropDownList("act_id", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.act_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tra_id, "Seleccione el Transporte", htmlAttributes: new { @class = "control-label " })
+                        <div class="col-md-10">
+                            @Html.DropDownList("tra_id", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.tra_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.dptu_etado, htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.dptu_etado)
+                                @Html.ValidationMessageFor(model => model.dptu_etado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.dptu_observacion, htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.dptu_observacion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.dptu_observacion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="Registrar" class="btn btn-success" />
+                    <a class="btn btn-danger" href="@Url.Action("Index")">Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script>
+    document.getElementById("ptu_id").disabled = true;
+</script>
+

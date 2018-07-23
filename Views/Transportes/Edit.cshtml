@@ -1,0 +1,108 @@
+﻿
+@model Pry_Agencia_Viajes.Transporte
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="super_container">
+
+    @Html.Partial("CabezeraTransporte", "EDITAR")
+    <br />
+
+    <div class="container">
+
+
+        @using (Html.BeginForm())
+        {
+        <div class="row jumbotron">
+            @Html.AntiForgeryToken()
+
+            <div class="col-12 text-center">
+                <h3>Formulario para Regitrar Transporte</h3>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.tra_id)
+            <div class="col-md-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tra_tipo_transporte, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tra_tipo_transporte, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tra_tipo_transporte, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tra_costo, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tra_costo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tra_costo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tra_origen, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tra_origen, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tra_origen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tra_hora_salida, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tra_hora_salida, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+                        @Html.ValidationMessageFor(model => model.tra_hora_salida, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tra_destino, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tra_destino, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tra_destino, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tra_hora_llegada, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tra_hora_llegada, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+                        @Html.ValidationMessageFor(model => model.tra_hora_llegada, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tra_descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div>
+                        @Html.TextAreaFor(model => model.tra_descripcion, new { @class = "form-control", @rows = 1 })
+                        @Html.ValidationMessageFor(model => model.tra_descripcion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="">
+                    <input type="submit" value="Gurdar Cambios" class="btn btn-success" />
+                    <a class="btn btn-danger" href="@Url.Action("Index")">Cancelar</a>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Agencia_de_Viajes_CertificacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Actividad">
+    <Key>
+      <PropertyRef Name="act_id" />
+    </Key>
+    <Property Name="act_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="act_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="act_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="act_costo" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="act_estado" Type="Boolean" />
+    <Property Name="act_ruta_foto_1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="act_ruta_foto_2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="lug_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Detalle_Paquete_Turistico" Relationship="Self.Actividades_DetallePaqueteTuristico" FromRole="Actividad" ToRole="Detalle_Paquete_Turistico" />
+    <NavigationProperty Name="Lugar" Relationship="Self.Lugar_Actividades" FromRole="Actividad" ToRole="Lugar" />
+  </EntityType>
+  <EntityType Name="Ciudad">
+    <Key>
+      <PropertyRef Name="ciu_id" />
+    </Key>
+    <Property Name="ciu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ciu_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ciu_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ciu_clima" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="ciu_recomendaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ciu_observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ciu_ruta_foto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Hotel" Relationship="Self.Ciudad_Hotel" FromRole="Ciudad" ToRole="Hotel" />
+    <NavigationProperty Name="Lugar" Relationship="Self.Ciudad_Lugar" FromRole="Ciudad" ToRole="Lugar" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="cli_id" />
+    </Key>
+    <Property Name="cli_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cli_cedula" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="cli_nombre1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cli_nombre2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="cli_apellido1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cli_apellido2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="cli_fecha_nac" Type="DateTime" Precision="0" />
+    <Property Name="cli_email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="cli_direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cli_telefono" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="cli_observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reserva" Relationship="Self.Cliente_Reserva" FromRole="Cliente" ToRole="Reserva" />
+  </EntityType>
+  <EntityType Name="Detalle_Habitacion">
+    <Key>
+      <PropertyRef Name="dha_id" />
+    </Key>
+    <Property Name="dha_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hot_id" Type="Int32" Nullable="false" />
+    <Property Name="hab_id" Type="Int32" Nullable="false" />
+    <Property Name="dha_costo" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="dha_observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Paquete_Turistico" Relationship="Self.DetalleHabitacion_PaqueteTuristico" FromRole="Detalle_Habitacion" ToRole="Paquete_Turistico" />
+    <NavigationProperty Name="Habitacion" Relationship="Self.Habitacion_Detalle_Habitacion" FromRole="Detalle_Habitacion" ToRole="Habitacion" />
+    <NavigationProperty Name="Hotel" Relationship="Self.Hotel_Detalle_Habitacion" FromRole="Detalle_Habitacion" ToRole="Hotel" />
+  </EntityType>
+  <EntityType Name="Detalle_Paquete_Turistico">
+    <Key>
+      <PropertyRef Name="dptu_id" />
+    </Key>
+    <Property Name="dptu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ptu_id" Type="Int32" Nullable="false" />
+    <Property Name="act_id" Type="Int32" Nullable="false" />
+    <Property Name="tra_id" Type="Int32" Nullable="false" />
+    <Property Name="dptu_etado" Type="Boolean" />
+    <Property Name="dptu_observacion" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Actividad" Relationship="Self.Actividades_DetallePaqueteTuristico" FromRole="Detalle_Paquete_Turistico" ToRole="Actividad" />
+    <NavigationProperty Name="Paquete_Turistico" Relationship="Self.PaqueteTuristico_DetallePaqueteTuristico" FromRole="Detalle_Paquete_Turistico" ToRole="Paquete_Turistico" />
+    <NavigationProperty Name="Transporte" Relationship="Self.Transporte_DetallePaqueteTuristico" FromRole="Detalle_Paquete_Turistico" ToRole="Transporte" />
+  </EntityType>
+  <EntityType Name="Detalle_Reserva">
+    <Key>
+      <PropertyRef Name="dres_id" />
+    </Key>
+    <Property Name="dres_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="res_id" Type="Int32" Nullable="false" />
+    <Property Name="ptu_id" Type="Int32" Nullable="false" />
+    <Property Name="dres_costo" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="dres_total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="dres_estado" Type="Boolean" />
+    <Property Name="dres_observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Viajero" Relationship="Self.DetalleReserva_Viajero" FromRole="Detalle_Reserva" ToRole="Viajero" />
+    <NavigationProperty Name="Paquete_Turistico" Relationship="Self.PaqueteTuristico_DetalleReserva" FromRole="Detalle_Reserva" ToRole="Paquete_Turistico" />
+    <NavigationProperty Name="Reserva" Relationship="Self.Reserva_Detallete_Reserva" FromRole="Detalle_Reserva" ToRole="Reserva" />
+  </EntityType>
+  <EntityType Name="Habitacion">
+    <Key>
+      <PropertyRef Name="hab_id" />
+    </Key>
+    <Property Name="hab_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hab_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="hab_numero_camas" Type="Int32" />
+    <Property Name="hab_numero_banos" Type="Int32" />
+    <Property Name="hab_telefono" Type="Boolean" />
+    <Property Name="hab_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="hab_observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Detalle_Habitacion" Relationship="Self.Habitacion_Detalle_Habitacion" FromRole="Habitacion" ToRole="Detalle_Habitacion" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="hot_id" />
+    </Key>
+    <Property Name="hot_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ciu_id" Type="Int32" Nullable="false" />
+    <Property Name="hot_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hot_direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="hot_calificacion" Type="Int32" />
+    <Property Name="hab_desayuno" Type="Boolean" />
+    <Property Name="hot_telefono" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Ciudad" Relationship="Self.Ciudad_Hotel" FromRole="Hotel" ToRole="Ciudad" />
+    <NavigationProperty Name="Detalle_Habitacion" Relationship="Self.Hotel_Detalle_Habitacion" FromRole="Hotel" ToRole="Detalle_Habitacion" />
+  </EntityType>
+  <EntityType Name="Lugar">
+    <Key>
+      <PropertyRef Name="lug_id" />
+    </Key>
+    <Property Name="lug_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lug_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lug_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="lug_estado" Type="Boolean" />
+    <Property Name="lug_ruta_foto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="lug_observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ciu_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Actividad" Relationship="Self.Lugar_Actividades" FromRole="Lugar" ToRole="Actividad" />
+    <NavigationProperty Name="Ciudad" Relationship="Self.Ciudad_Lugar" FromRole="Lugar" ToRole="Ciudad" />
+  </EntityType>
+  <EntityType Name="Paquete_Turistico">
+    <Key>
+      <PropertyRef Name="ptu_id" />
+    </Key>
+    <Property Name="ptu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ptu_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="ptu_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ptu_estado" Type="Boolean" />
+    <Property Name="ptu_foto_1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ptu_foto_2" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ptu_fecha_salida" Type="DateTime" Precision="0" />
+    <Property Name="ptu_fecha_llegada" Type="DateTime" Precision="0" />
+    <Property Name="dha_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Detalle_Habitacion" Relationship="Self.DetalleHabitacion_PaqueteTuristico" FromRole="Paquete_Turistico" ToRole="Detalle_Habitacion" />
+    <NavigationProperty Name="Detalle_Paquete_Turistico" Relationship="Self.PaqueteTuristico_DetallePaqueteTuristico" FromRole="Paquete_Turistico" ToRole="Detalle_Paquete_Turistico" />
+    <NavigationProperty Name="Detalle_Reserva" Relationship="Self.PaqueteTuristico_DetalleReserva" FromRole="Paquete_Turistico" ToRole="Detalle_Reserva" />
+  </EntityType>
+  <EntityType Name="Reserva">
+    <Key>
+      <PropertyRef Name="res_id" />
+    </Key>
+    <Property Name="res_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cli_id" Type="Int32" Nullable="false" />
+    <Property Name="res_fecha" Type="DateTime" Precision="0" />
+    <Property Name="res_forma_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="res_estado_reserva" Type="Boolean" />
+    <NavigationProperty Name="Cliente" Relationship="Self.Cliente_Reserva" FromRole="Reserva" ToRole="Cliente" />
+    <NavigationProperty Name="Detalle_Reserva" Relationship="Self.Reserva_Detallete_Reserva" FromRole="Reserva" ToRole="Detalle_Reserva" />
+  </EntityType>
+  <EntityType Name="Transporte">
+    <Key>
+      <PropertyRef Name="tra_id" />
+    </Key>
+    <Property Name="tra_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tra_tipo_transporte" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tra_costo" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="tra_origen" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="tra_destino" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="tra_hora_salida" Type="Time" Precision="7" />
+    <Property Name="tra_hora_llegada" Type="Time" Precision="7" />
+    <Property Name="tra_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Detalle_Paquete_Turistico" Relationship="Self.Transporte_DetallePaqueteTuristico" FromRole="Transporte" ToRole="Detalle_Paquete_Turistico" />
+  </EntityType>
+  <EntityType Name="Viajero">
+    <Key>
+      <PropertyRef Name="via_id" />
+    </Key>
+    <Property Name="via_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dres_id" Type="Int32" Nullable="false" />
+    <Property Name="via_cedula" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="via_nombre1" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="via_nombre2" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="via_apellido1" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="via_apellido2" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="via_fecha_nac" Type="DateTime" Precision="0" />
+    <Property Name="via_tipo_sangre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="via_email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="via_direccion" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="via_telefono" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="via_pais" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="via_nacionalidad" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="via_observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Detalle_Reserva" Relationship="Self.DetalleReserva_Viajero" FromRole="Viajero" ToRole="Detalle_Reserva" />
+  </EntityType>
+  <Association Name="Actividades_DetallePaqueteTuristico">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+    <End Role="Detalle_Paquete_Turistico" Type="Self.Detalle_Paquete_Turistico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="act_id" />
+      </Principal>
+      <Dependent Role="Detalle_Paquete_Turistico">
+        <PropertyRef Name="act_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Lugar_Actividades">
+    <End Role="Lugar" Type="Self.Lugar" Multiplicity="1" />
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lugar">
+        <PropertyRef Name="lug_id" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="lug_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ciudad_Hotel">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+    <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="ciu_id" />
+      </Principal>
+      <Dependent Role="Hotel">
+        <PropertyRef Name="ciu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ciudad_Lugar">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+    <End Role="Lugar" Type="Self.Lugar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="ciu_id" />
+      </Principal>
+      <Dependent Role="Lugar">
+        <PropertyRef Name="ciu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cliente_Reserva">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="cli_id" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="cli_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetalleHabitacion_PaqueteTuristico">
+    <End Role="Detalle_Habitacion" Type="Self.Detalle_Habitacion" Multiplicity="1" />
+    <End Role="Paquete_Turistico" Type="Self.Paquete_Turistico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalle_Habitacion">
+        <PropertyRef Name="dha_id" />
+      </Principal>
+      <Dependent Role="Paquete_Turistico">
+        <PropertyRef Name="dha_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Habitacion_Detalle_Habitacion">
+    <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+    <End Role="Detalle_Habitacion" Type="Self.Detalle_Habitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Habitacion">
+        <PropertyRef Name="hab_id" />
+      </Principal>
+      <Dependent Role="Detalle_Habitacion">
+        <PropertyRef Name="hab_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Hotel_Detalle_Habitacion">
+    <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+    <End Role="Detalle_Habitacion" Type="Self.Detalle_Habitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="hot_id" />
+      </Principal>
+      <Dependent Role="Detalle_Habitacion">
+        <PropertyRef Name="hot_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaqueteTuristico_DetallePaqueteTuristico">
+    <End Role="Paquete_Turistico" Type="Self.Paquete_Turistico" Multiplicity="1" />
+    <End Role="Detalle_Paquete_Turistico" Type="Self.Detalle_Paquete_Turistico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paquete_Turistico">
+        <PropertyRef Name="ptu_id" />
+      </Principal>
+      <Dependent Role="Detalle_Paquete_Turistico">
+        <PropertyRef Name="ptu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Transporte_DetallePaqueteTuristico">
+    <End Role="Transporte" Type="Self.Transporte" Multiplicity="1" />
+    <End Role="Detalle_Paquete_Turistico" Type="Self.Detalle_Paquete_Turistico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transporte">
+        <PropertyRef Name="tra_id" />
+      </Principal>
+      <Dependent Role="Detalle_Paquete_Turistico">
+        <PropertyRef Name="tra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetalleReserva_Viajero">
+    <End Role="Detalle_Reserva" Type="Self.Detalle_Reserva" Multiplicity="1" />
+    <End Role="Viajero" Type="Self.Viajero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalle_Reserva">
+        <PropertyRef Name="dres_id" />
+      </Principal>
+      <Dependent Role="Viajero">
+        <PropertyRef Name="dres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaqueteTuristico_DetalleReserva">
+    <End Role="Paquete_Turistico" Type="Self.Paquete_Turistico" Multiplicity="1" />
+    <End Role="Detalle_Reserva" Type="Self.Detalle_Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paquete_Turistico">
+        <PropertyRef Name="ptu_id" />
+      </Principal>
+      <Dependent Role="Detalle_Reserva">
+        <PropertyRef Name="ptu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Reserva_Detallete_Reserva">
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+    <End Role="Detalle_Reserva" Type="Self.Detalle_Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reserva">
+        <PropertyRef Name="res_id" />
+      </Principal>
+      <Dependent Role="Detalle_Reserva">
+        <PropertyRef Name="res_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Agencia_de_Viajes_CertificacionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actividad" EntityType="Self.Actividad" />
+    <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Detalle_Habitacion" EntityType="Self.Detalle_Habitacion" />
+    <EntitySet Name="Detalle_Paquete_Turistico" EntityType="Self.Detalle_Paquete_Turistico" />
+    <EntitySet Name="Detalle_Reserva" EntityType="Self.Detalle_Reserva" />
+    <EntitySet Name="Habitacion" EntityType="Self.Habitacion" />
+    <EntitySet Name="Hotel" EntityType="Self.Hotel" />
+    <EntitySet Name="Lugar" EntityType="Self.Lugar" />
+    <EntitySet Name="Paquete_Turistico" EntityType="Self.Paquete_Turistico" />
+    <EntitySet Name="Reserva" EntityType="Self.Reserva" />
+    <EntitySet Name="Transporte" EntityType="Self.Transporte" />
+    <EntitySet Name="Viajero" EntityType="Self.Viajero" />
+    <AssociationSet Name="Actividades_DetallePaqueteTuristico" Association="Self.Actividades_DetallePaqueteTuristico">
+      <End Role="Actividad" EntitySet="Actividad" />
+      <End Role="Detalle_Paquete_Turistico" EntitySet="Detalle_Paquete_Turistico" />
+    </AssociationSet>
+    <AssociationSet Name="Lugar_Actividades" Association="Self.Lugar_Actividades">
+      <End Role="Lugar" EntitySet="Lugar" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="Ciudad_Hotel" Association="Self.Ciudad_Hotel">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Hotel" EntitySet="Hotel" />
+    </AssociationSet>
+    <AssociationSet Name="Ciudad_Lugar" Association="Self.Ciudad_Lugar">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Lugar" EntitySet="Lugar" />
+    </AssociationSet>
+    <AssociationSet Name="Cliente_Reserva" Association="Self.Cliente_Reserva">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="DetalleHabitacion_PaqueteTuristico" Association="Self.DetalleHabitacion_PaqueteTuristico">
+      <End Role="Detalle_Habitacion" EntitySet="Detalle_Habitacion" />
+      <End Role="Paquete_Turistico" EntitySet="Paquete_Turistico" />
+    </AssociationSet>
+    <AssociationSet Name="Habitacion_Detalle_Habitacion" Association="Self.Habitacion_Detalle_Habitacion">
+      <End Role="Habitacion" EntitySet="Habitacion" />
+      <End Role="Detalle_Habitacion" EntitySet="Detalle_Habitacion" />
+    </AssociationSet>
+    <AssociationSet Name="Hotel_Detalle_Habitacion" Association="Self.Hotel_Detalle_Habitacion">
+      <End Role="Hotel" EntitySet="Hotel" />
+      <End Role="Detalle_Habitacion" EntitySet="Detalle_Habitacion" />
+    </AssociationSet>
+    <AssociationSet Name="PaqueteTuristico_DetallePaqueteTuristico" Association="Self.PaqueteTuristico_DetallePaqueteTuristico">
+      <End Role="Paquete_Turistico" EntitySet="Paquete_Turistico" />
+      <End Role="Detalle_Paquete_Turistico" EntitySet="Detalle_Paquete_Turistico" />
+    </AssociationSet>
+    <AssociationSet Name="Transporte_DetallePaqueteTuristico" Association="Self.Transporte_DetallePaqueteTuristico">
+      <End Role="Transporte" EntitySet="Transporte" />
+      <End Role="Detalle_Paquete_Turistico" EntitySet="Detalle_Paquete_Turistico" />
+    </AssociationSet>
+    <AssociationSet Name="DetalleReserva_Viajero" Association="Self.DetalleReserva_Viajero">
+      <End Role="Detalle_Reserva" EntitySet="Detalle_Reserva" />
+      <End Role="Viajero" EntitySet="Viajero" />
+    </AssociationSet>
+    <AssociationSet Name="PaqueteTuristico_DetalleReserva" Association="Self.PaqueteTuristico_DetalleReserva">
+      <End Role="Paquete_Turistico" EntitySet="Paquete_Turistico" />
+      <End Role="Detalle_Reserva" EntitySet="Detalle_Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="Reserva_Detallete_Reserva" Association="Self.Reserva_Detallete_Reserva">
+      <End Role="Reserva" EntitySet="Reserva" />
+      <End Role="Detalle_Reserva" EntitySet="Detalle_Reserva" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Pry_Agencia_Viajes.Paquete_Turistico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="super_container">
+
+    @Html.Partial("CabezeraPaquete", "Lista de Paquetes Turísticos")
+    <div class="">
+        <br />
+        <div class="container">
+            <p>
+                @Html.ActionLink("Crear Nuevo", "Create", null, new { @class = "btn btn-success" })
+                @*@Html.ActionLink("Armar Paquete", "PreCreate", null, new { @class = "btn btn-success" })*@
+                <button id="botonModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Armar Paquete Turistico
+                </button>
+                @*@Html.ActionLink("Armar Paquete Turistico", "Index", "DetallePaquetesTuristicos", null, new { @class = "btn btn-success" })*@
+            </p>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ptu_nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ptu_descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ptu_estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ptu_fecha_salida)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ptu_fecha_llegada)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Detalle_Habitacion.dha_observacion)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ptu_nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ptu_descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ptu_estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ptu_fecha_salida)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ptu_fecha_llegada)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Detalle_Habitacion.dha_observacion)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ptu_id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ptu_id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ptu_id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Paquetes Creados</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("Create", "DetallePaquetesTuristicos",FormMethod.Get))
+            {
+        <div class="modal-body">
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.DropDownList("ptu_id", null, htmlAttributes: new { @class = "form-control", onclick = "valorObtenido()" })
+                </div>
+            </div>
+            <input type="text" id="id_paquete" name="ptu_id" value="0" hidden />
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <input type="submit" name="Siguiente" value="Siguiente" class="btn btn-success"/>
+        </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var pro
+    function valorObtenido() {
+    var valor = document.getElementById("ptu_id");
+    pro = valor.options[valor.selectedIndex].value;
+        console.log(pro);
+        document.getElementById("id_paquete").value = pro;
+    }
+</script>
+

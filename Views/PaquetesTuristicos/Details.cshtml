@@ -1,0 +1,82 @@
+﻿@model Pry_Agencia_Viajes.Paquete_Turistico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Paquete_Turistico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ptu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptu_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptu_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptu_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptu_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptu_foto_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptu_foto_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptu_foto_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptu_foto_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptu_fecha_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptu_fecha_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptu_fecha_llegada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptu_fecha_llegada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalle_Habitacion.dha_observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detalle_Habitacion.dha_observacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ptu_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

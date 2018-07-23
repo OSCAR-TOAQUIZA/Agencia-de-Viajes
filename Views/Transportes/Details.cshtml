@@ -1,0 +1,74 @@
+﻿@model Pry_Agencia_Viajes.Transporte
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transporte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_tipo_transporte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_tipo_transporte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_costo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_hora_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_hora_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_hora_llegada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_hora_llegada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tra_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tra_descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tra_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Pry_Agencia_Viajes.Lugar>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<div class="super_container">
+
+    @Html.Partial("Cabezera_Lugar", "INICIO")
+    <div class="">
+        <br />
+        <div class="container">
+            <p>
+                @Html.ActionLink("Registrar Nuevo Lugar", "Create", null, new { @class = "btn btn-success" })
+            </p>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.lug_nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.lug_descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.lug_ruta_foto)
+                    </th>
+                    <th> 
+                        Ciudad
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.lug_nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.lug_descripcion)
+                        </td>
+                        <td>                            
+                            <img width="50px" height="50px" src="@Url.Content(item.lug_ruta_foto)" alt="foto_lugar">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ciudad.ciu_nombre)
+                        </td>
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.lug_id }) |*@
+                            @Html.ActionLink("Ver Detalles", "Details", new { id = item.lug_id }) |
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.lug_id })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+        </div>
+</div>

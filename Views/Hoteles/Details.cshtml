@@ -1,0 +1,66 @@
+﻿@model Pry_Agencia_Viajes.Hotel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hotel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hot_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hot_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hot_direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hot_direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hot_calificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hot_calificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hab_desayuno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_desayuno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hot_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hot_telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad.ciu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad.ciu_nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.hot_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
